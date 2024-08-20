@@ -1,0 +1,32 @@
+.button_style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  &:hover {
+    transition: 1s ease;
+    opacity: 0.5;
+  }
+  &:disabled {
+    transition: 1s ease;
+    opacity: 0.5;
+  }
+  &.button_loading {
+    .button_content {
+      opacity: 0;
+    }
+    .button_loader {
+      display: block;
+    }
+  }
+}
+
+.button_loader {
+  display: none;
+  width: 20px;
+  height: auto;
+  position: absolute;
+}
