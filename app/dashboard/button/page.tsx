@@ -1,5 +1,17 @@
+'use client';
 import {Button} from '@/components';
+import {useCommon} from '@/hooks';
+import {useSession} from 'next-auth/react';
+import {useEffect} from 'react';
 export default function ButtonPage() {
+  const {data, status, update} = useSession({
+    required: true,
+    onUnauthenticated() {
+      // The user is not authenticated, handle it here.
+      console.log('unauthenticated');
+    },
+  });
+
   return (
     <div className='page_ctr'>
       <h1>Button Solid</h1>
