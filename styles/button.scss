@@ -13,6 +13,7 @@
   &:disabled {
     transition: 1s ease;
     opacity: 0.5;
+    cursor: not-allowed;
   }
   &.button_loading {
     .button_content {
