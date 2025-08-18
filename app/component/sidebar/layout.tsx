@@ -1,13 +1,11 @@
-import {Sidebar} from '@/components';
-import {GermanSheperdImage} from '@/public';
+import { Sidebar } from '@/components';
+import { GermanSheperdImage } from '@/public';
 
-export default function SidebarNormalLayout({
-  children,
-}: Readonly<{children: React.ReactNode}>) {
+export default function SidebarNormalLayout({ children }: React.PropsWithChildren) {
   return (
-    <div className='main_container'>
+    <div className="flex w-full">
       <Sidebar logo={GermanSheperdImage} />
-      <div className='content'>{children}</div>
+      <div className="w-[calc(100%_-_160px)]">{children}</div>
     </div>
   );
 }

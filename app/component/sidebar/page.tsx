@@ -1,8 +1,8 @@
-import {Sidebar} from '@/components';
+import { Sidebar } from '@/components';
 
 export default function SidebarPage() {
   return (
-    <div className=''>
+    <div className="">
       <h1>WELCOME TO SIDEBAR COMPONENT</h1>
     </div>
   );
