@@ -1,6 +1,7 @@
 import Image, { StaticImageData } from 'next/image';
 import React from 'react';
 import clsx from 'clsx';
+import { Loading } from '@/public';
 
 interface ButtonProps {
   variant?: 'solid' | 'outline' | 'text';
@@ -15,12 +16,11 @@ interface ButtonProps {
 type VariantBase = 'solid' | 'outline' | 'text';
 type ColorSchemeBase = 'primary' | 'secondary' | 'neutral' | 'danger' | 'warning';
 
-const base =
-  'inline-flex items-center gap-2 !px-[24px] !py-[10px] rounded-lg transition-colors cursor-pointer';
+const base = 'inline-flex items-center gap-2 !px-[24px] !py-[10px] rounded-lg transition-colors cursor-pointer';
 
 const variantBase: Record<VariantBase, string> = {
   solid: 'border border-transparent',
-  outline: 'border bg-transparent',
+  outline: 'border-2 bg-transparent',
   text: 'border-0 bg-transparent',
 };
 
@@ -52,25 +52,22 @@ const schemeByVariant: Record<ColorSchemeBase, Record<VariantBase, string>> = {
   },
 };
 
-export default function Button({
-  variant = 'solid',
-  colorScheme = 'primary',
-  image,
-  text,
-  disabled,
-  onClick,
-  loading,
-}: ButtonProps) {
-  const className = clsx(
-    base,
-    variantBase[variant],
-    schemeByVariant[colorScheme][variant],
-    (disabled || loading) && 'opacity-60 cursor-not-allowed',
-  );
+export default function Button({ variant = 'solid', colorScheme = 'primary', image, text, disabled, onClick, loading }: ButtonProps) {
+  const className = clsx(base, variantBase[variant], schemeByVariant[colorScheme][variant], (disabled || loading) && 'opacity-60 !cursor-not-allowed');
+  const handleRenderContent = () => {
+    if (loading) {
+      return <Image src={Loading} width={20} height={20} alt="btn-loading" />;
+    }
+    return (
+      <>
+        {image && <Image src={image} width={20} height={20} alt="button_image" />}
+        {text}
+      </>
+    );
+  };
   return (
     <button className={className} disabled={disabled} onClick={onClick}>
-      {image && <Image src={image} width={20} height={20} alt="button_image" />}
-      {text}
+      {handleRenderContent()}
     </button>
   );
 }
