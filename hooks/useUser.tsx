@@ -1,21 +1,11 @@
-import {API_ROUTES} from '@/consts';
-import {useFetch} from './useFetch';
+import { API_ROUTES } from '@/consts';
+import { create } from 'zustand';
 
-export function useUser() {
-  const getUser = async () => {
-    try {
-      const callUserList = await useFetch(API_ROUTES.listUser, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      console.log(callUserList, 'test');
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  return {
-    getUser,
-  };
-}
+type UserState = {
+  user: any;
+  setUser: (user: any) => void;
+};
+export const useUserStore = create<UserState>((set) => ({
+  user: null,
+  setUser: (user) => set({ user }),
+}));
