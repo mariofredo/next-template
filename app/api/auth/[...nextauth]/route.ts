@@ -9,7 +9,6 @@ const handler = NextAuth({
   providers: [
     Credentials({
       name: 'Credentials',
-
       credentials: {
         username: {
           label: 'Username',

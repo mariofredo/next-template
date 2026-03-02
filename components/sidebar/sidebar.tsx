@@ -3,6 +3,7 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { BiHome } from 'react-icons/bi';
+import { FaUsers } from 'react-icons/fa';
 
 interface SidebarProps {
   logo: StaticImageData;
@@ -10,10 +11,12 @@ interface SidebarProps {
 
 export default function Sidebar({ logo }: SidebarProps) {
   const sidebarItems = [
-    { label: 'Home', href: '/', icon: <BiHome fontSize={28} className="block w-[40px] h-[40px]" /> },
-    { label: 'About', href: '/about' },
-    { label: 'Contact', href: '/contact' },
-    { label: 'Profile', href: '/profile' },
+    { label: 'Dashboard', href: '/', icon: <BiHome fontSize={28} className="block w-[40px] h-[40px]" /> },
+    { label: 'Users', href: '/users' ,icon: <FaUsers fontSize={28} className="block w-[40px] h-[40px]" /> },
+    { label: 'Products', href: '/products' ,icon: <></> },
+    { label: 'Categories', href: '/categories' ,icon: <></> },
+    { label: 'Orders', href: '/orders' ,icon: <></> },
+    { label: 'Profile', href: '/profile' ,icon: <></> },
   ];
   return (
     <div className={clsx(`sticky top-0 h-screen w-auto w-max-[320px] bg-gray-800 text-white p-[20px]`)}>

@@ -6,7 +6,7 @@ import clsx from 'clsx';
 interface ButtonProps {
   variant?: VariantBase;
   colorScheme?: ColorSchemeBase;
-  image?: string | StaticImageData | React.JSX.Element;
+  image?: string | StaticImageData;
   text?: string;
   disabled?: boolean;
   loading?: boolean;
