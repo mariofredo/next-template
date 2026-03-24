@@ -15,20 +15,16 @@ const handler = NextAuth({
           type: 'text',
           placeholder: 'username',
         },
-        password: {label: 'Password', type: 'password'},
+        password: { label: 'Password', type: 'password' },
       },
-
       authorize: async (credentials) => {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(credentials),
-          }
-        );
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(credentials),
+        });
         const user = await res.json();
         if (res.ok && user) {
           return user;
@@ -40,4 +36,4 @@ const handler = NextAuth({
   ],
 });
 
-export {handler as GET, handler as POST};
+export { handler as GET, handler as POST };
